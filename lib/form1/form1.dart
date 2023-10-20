@@ -1,6 +1,7 @@
 import 'package:assignment7/form2/form2.dart';
 import 'package:assignment7/signUpModal.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Form1 extends StatefulWidget {
   const Form1({super.key});
@@ -44,6 +45,11 @@ class _Form1State extends State<Form1> {
                   margin: EdgeInsets.symmetric(vertical: 10),
                   child: TextField(
                     keyboardType: TextInputType.name,
+                    onChanged: (text) {
+                      setState(() {
+                        name = text;
+                      });
+                    },
                     decoration: InputDecoration(
                         label: Text("Name"),
                         labelStyle: TextStyle(
@@ -68,6 +74,11 @@ class _Form1State extends State<Form1> {
                   margin: EdgeInsets.symmetric(vertical: 10),
                   child: TextField(
                     keyboardType: TextInputType.emailAddress,
+                    onChanged: (text) {
+                      setState(() {
+                        email = text;
+                      });
+                    },
                     decoration: InputDecoration(
                         label: Text("Email"),
                         labelStyle: TextStyle(
@@ -92,6 +103,11 @@ class _Form1State extends State<Form1> {
                   margin: EdgeInsets.symmetric(vertical: 10),
                   child: TextField(
                     keyboardType: TextInputType.phone,
+                    onChanged: (text) {
+                      setState(() {
+                        phonenumber = text;
+                      });
+                    },
                     decoration: InputDecoration(
                         label: Text("Phonenumber"),
                         labelStyle: TextStyle(
@@ -116,6 +132,11 @@ class _Form1State extends State<Form1> {
                   margin: EdgeInsets.symmetric(vertical: 10),
                   child: TextField(
                     keyboardType: TextInputType.visiblePassword,
+                    onChanged: (text) {
+                      setState(() {
+                        password = text;
+                      });
+                    },
                     decoration: InputDecoration(
                         label: Text("Password"),
                         labelStyle: TextStyle(
@@ -205,13 +226,15 @@ class _Form1State extends State<Form1> {
             ),
             ElevatedButton(
                 onPressed: () {
-                  SignUpModal().updateData({
+                  final signUp = context.read<SignUpModal>();
+                  signUp.updateData({
                     'name': name,
                     'email': email,
                     'phonenumber': phonenumber,
                     'password': password,
                     'gender': gender,
-                    'hobbies': hobbies,
+                    'cricket': hobbies[0],
+                    'football': hobbies[1],
                   });
                   Navigator.push(
                     context,

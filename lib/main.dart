@@ -5,13 +5,15 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => SignUpModal()),
-        // Add more providers here if needed
-      ],
+    ChangeNotifierProvider(
+      create: (context) => SignUpModal(),
       child: MyApp(),
     ),
+    // MultiProvider(
+    //   providers: [
+    //     // Add more providers here if needed
+    //   ],
+    // ),
   );
 }
 
